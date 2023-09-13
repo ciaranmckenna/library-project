@@ -1,5 +1,6 @@
 package com.luv2code.springbootlibrary.config;
 
+import com.luv2code.springbootlibrary.entity.Book;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -15,5 +16,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors){
         cors.addMapping(config.getBasePath() + "/**")
                 .allowedOrigins(theAllowedOrigins);
+
+        config.exposeIdsFor(Book.class);
     }
 }
